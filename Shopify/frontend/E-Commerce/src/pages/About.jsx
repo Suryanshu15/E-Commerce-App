@@ -7,6 +7,7 @@ const About = () => {
         <Layout>
             <h2>About Us</h2>
             <h4>Contributors</h4>
+            <h2>XYZ</h2>
         </Layout>
     </>
   )
