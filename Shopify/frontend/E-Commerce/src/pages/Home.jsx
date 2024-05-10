@@ -1,12 +1,12 @@
 // import React from 'react'
 
-import Layout from "../layouts/Layout"
+// import Layout from "../layouts/Layout"
 
 const Home = () => {
   return (
-    <Layout>
+    <div title={'Best offers'}>
       <h1>Explore your favorites this festive!</h1>
-    </Layout>
+    </div>
   )
 }
 

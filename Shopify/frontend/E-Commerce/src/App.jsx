@@ -12,8 +12,8 @@ import Cart from './pages/Cart'
 // import Policy from './pages/Policy' 
 import PageNotFound from './pages/PageNotFound' 
 
-// import AddProduct from './pages/AddProduct'
-// import ProductDetails from "./pages/ProductDetails"
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
  const router = createBrowserRouter([
