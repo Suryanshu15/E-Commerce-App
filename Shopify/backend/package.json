@@ -1,5 +1,6 @@
 {
   "name": "restapi",
+  "type": "module",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,13 +9,18 @@
     "server": "nodemon index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Rahul Kumar",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "concurrently": "^8.2.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "mongoose": "^8.3.2"
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.3.2",
+    "morgan": "^1.10.0",
+    "react-hot-toast": "^2.4.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"

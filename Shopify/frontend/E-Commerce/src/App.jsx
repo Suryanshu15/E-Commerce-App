@@ -5,15 +5,14 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './layouts/Layout'
 import Home from './pages/Home' 
 import Category from './pages/Category' 
-import Login from './pages/Login' 
+import Login from './pages/Auth/Login' 
+import Register from './pages/Auth/Register' 
 import Admin from './pages/Admin' 
 import Cart from './pages/Cart' 
-// import About from './pages/About' 
-// import Policy from './pages/Policy' 
 import PageNotFound from './pages/PageNotFound' 
 
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+// import { ToastContainer } from 'react-toastify'
+// import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
  const router = createBrowserRouter([
@@ -21,11 +20,10 @@ function App() {
     path: "/",
     element: <Layout />,
     children: [
-      { path: "/home", element: <Home />}, 
+      { path: "/", element: <Home />}, 
       { path: "/category", element: <Category />}, 
-      // { path: "/about", element: <About />}, 
-      // { path: "/policy", element: <Policy />}, 
       { path: "/login", element: <Login />}, 
+      { path: "/register", element: <Register />}, 
       { path: "/admin", element: <Admin />}, 
       { path: "/cart", element: <Cart />}, 
       { path: "*", element: <PageNotFound />}, 
