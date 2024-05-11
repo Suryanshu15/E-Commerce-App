@@ -2,7 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import morgan from 'morgan'
 import cors from 'cors'
-import connectDB  from './db/db.config.mjs'
+import connectDB  from './db/db.config.cjs'
 import authRoutes from './routes/authRoutes.js'
 import categoryRoutes from './routes/categoryRoutes.js'
 
@@ -30,7 +30,9 @@ app.get('/', (req, res) => {
 })
 
 //PORT
-const PORT = process.env.PORT || 8080
+process.env.DEV_MODE = "development";
+
+const PORT = 8080;
 
 //run listen
 app.listen(PORT, () => {
