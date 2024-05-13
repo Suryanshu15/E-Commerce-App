@@ -2,12 +2,12 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle"
 import './App.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Layout from './layouts/Layout'
+import Layout from './components/layouts/Layout'
 import Home from './pages/Home' 
 import Category from './pages/Category' 
 import Login from './pages/Auth/Login' 
 import Register from './pages/Auth/Register' 
-import Admin from './pages/Admin' 
+// import Admin from './pages/Admin' 
 import Cart from './pages/Cart' 
 import PageNotFound from './pages/PageNotFound' 
 
@@ -24,7 +24,7 @@ function App() {
       { path: "/category", element: <Category />}, 
       { path: "/login", element: <Login />}, 
       { path: "/register", element: <Register />}, 
-      { path: "/admin", element: <Admin />}, 
+      // { path: "/admin", element: <Admin />}, 
       { path: "/cart", element: <Cart />}, 
       { path: "*", element: <PageNotFound />}, 
 
