@@ -1,4 +1,4 @@
-import AdminMenu from "../../components/Layout/AdminMenu";
+import AdminMenu from "../../components/layouts/AdminMenu";
 // import Layout from "./../../components/Layout/Layout";
 
 const Users = () => {

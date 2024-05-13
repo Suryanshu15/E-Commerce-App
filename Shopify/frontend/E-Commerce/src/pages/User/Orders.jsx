@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
-import UserMenu from "../../components/Layout/UserMenu";
-import Layout from "./../../components/Layout/Layout";
+import UserMenu from "../../components/layouts/UserMenu";
+// import Layout from "./../../components/layouts/Layout";
 import axios from "axios";
 import { useAuth } from "../../context/auth";
 import moment from "moment";
@@ -23,7 +23,7 @@ const Orders = () => {
     if (auth?.token) getOrders();
   }, [auth?.token]);
   return (
-    <Layout title={"Your Orders"}>
+    <div title={"Your Orders"}>
       <div className="container-flui p-3 m-3 dashboard">
         <div className="row">
           <div className="col-md-3">
@@ -82,7 +82,7 @@ const Orders = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 };
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Layout from "./../../components/Layout/Layout";
+// import Layout from "./../../components/layouts/Layout";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -34,7 +34,7 @@ const ForgotPasssword = () => {
     }
   };
   return (
-    <Layout title={"Forgot Password - Ecommerce APP"}>
+    <div title={"Forgot Password - Ecommerce APP"}>
       <div className="form-container ">
         <form onSubmit={handleSubmit}>
           <h4 className="title">RESET PASSWORD</h4>
@@ -78,7 +78,7 @@ const ForgotPasssword = () => {
           </button>
         </form>
       </div>
-    </Layout>
+    </div>
   );
 };
 

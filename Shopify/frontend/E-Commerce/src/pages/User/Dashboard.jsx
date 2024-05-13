@@ -1,4 +1,4 @@
-import UserMenu from "../../components/Layout/UserMenu";
+import UserMenu from "../../components/layouts/UserMenu";
 import { useAuth } from "../../context/auth";
 const Dashboard = () => {
   const [auth] = useAuth();
