@@ -1,8 +1,8 @@
-#E-Commerce-App
+# React + Vite
 
-The Shopify application is an e-commerce website having functionalities - create account, traverse through the variety of products based on user's interest, add product to cart & pay securely through UPI, credit card & Debit cards.
-<br>
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+Currently, two official plugins are available:
 
-
-Author - Rahul Kumar
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
