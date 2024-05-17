@@ -5,13 +5,14 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import jwt from "jsonwebtoken";
 import { Product } from "../models/product.models.js";
+import { Admin } from "../models/admin.model.js";
 
 const generateAccessAndResponceTokens = async (userId) => {
     try {
         const user = await User.findById(userId)
-        // console.log(user)
+        console.log(user._id)
         const accessToken = await user.generateAccessToken();
-        console.log(accessToken);
+        // console.log(accessToken);
         const refreshToken = await user.generateRefreshToken()
         // console.log(accessToken + " " + refreshToken)
 
@@ -25,15 +26,6 @@ const generateAccessAndResponceTokens = async (userId) => {
 }
 
 const registerUser = asyncHandler( async(req,res) => {
-    // get user details from frontend
-    // validation - nonEmpty
-    // check if user exist or not
-    // check for images for avatar
-    // upload them to cloudinary
-    // create user object - create entry in db
-    // remove password and refresh token field from responce
-    // check from user creation
-    // return res
     const {fullname, email, username, password, address}= req.body
     // console.log("email: ", email)
 
@@ -255,11 +247,37 @@ const addToCart = asyncHandler(async(req,res)=>{
 
 })
 
+const addOrders = asyncHandler(async(req,res)=>{
+    const {productId} = req.body;
+
+    if(!productId){
+        throw new ApiError(400, invalidProduct)
+    }
+
+    const product = Product.findOne({productId})
+
+    if(!product){
+        throw new ApiError(404, "product not found")
+    }
+
+    const user = await User.findById(req.user._id)
+    // console.log(user._id)
+
+    user.orders.push(productId)
+    user.save({validateBeforeSave: false})
+
+    const admin = Admin.findById()
+
+    return res.status(200)
+    .json(new ApiResponse(200, {}, "Added to cart successfully"))
+})
+
 export {
     registerUser,
     loginUser,
     logoutUser,
     refreshAccessToken,
     changePassword,
-    addToCart
+    addToCart,
+    addOrders
 }

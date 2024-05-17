@@ -19,14 +19,14 @@ app.use(cookieParser())
 //route import
 
 import userRouter from './routes/user.routes.js'
+import adminRouter from './routes/admin.routes.js'
 
 //routes declaration  
 //as we have separated the routes and controls so we can't use app.get()
 
 
 app.use("/users", userRouter)
-
-// app.use("/admin" , )
+app.use("/admin" , adminRouter)
 
 
 export { app }

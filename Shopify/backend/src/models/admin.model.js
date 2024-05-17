@@ -1,5 +1,7 @@
 import mongoose, { Schema } from "mongoose";
+import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
+
 
 
 const adminSchema = new Schema({
@@ -27,6 +29,10 @@ const adminSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: "product",
         }
+        ,{
+            type: Schema.Types.ObjectId,
+            ref: "user"
+        }
     ],
     refershToken: {
         type: String,
@@ -49,27 +55,26 @@ adminSchema.methods.isPasswordCorrect = async function(password){
 }
 
 adminSchema.methods.generateAccessToken = async function() {
-    // console.log(process.env.ACCESS_TOKEN_SECRET);
     return jwt.sign(
         {
             _id: this._id,
             email: this.email,
-            username: this.username,
-            fullname: this.fullname
+            adminName: this.adminName,
+
         },
         process.env.ACCESS_TOKEN_SECRET,
         {  
             expiresIn: process.env.ACCESS_TOKEN_EXPIRY   
         }
-    )   
+    )  
 }
 adminSchema.methods.generateRefreshToken = async function(){
+
     return jwt.sign(
         {
             _id: this._id,
-            
         },
-        process.env.REFRESH_TOKEN_SECRET,
+        process.env.REFRESH_TOKEN_EXPIRY,
         {  
             expiresIn: process.env.REFRESH_TOKEN_EXPIRY
             
