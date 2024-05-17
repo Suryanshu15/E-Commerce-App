@@ -4,6 +4,7 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js"
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import jwt from "jsonwebtoken";
+import { Product } from "../models/product.models.js";
 
 const generateAccessAndResponceTokens = async (userId) => {
     try {
@@ -93,15 +94,7 @@ const registerUser = asyncHandler( async(req,res) => {
 })
 
 const loginUser = asyncHandler( async(req,res) => {
-    // reques.body -> data
-    //username or email based login
-    // find the user
-    // password check
-    // generate acess and refresh token
-    // send cookie
-    // responce
-
-    
+        
     const {email,password,username} = req.body;
 
     if(!(email || username)) {
@@ -111,7 +104,7 @@ const loginUser = asyncHandler( async(req,res) => {
     const user = await User.findOne({
         $or: [{username},{email}]
     })
-    console.log(user)
+    // console.log(user)
 
     if(!user){
         throw new ApiError(404, "user does not exist")
@@ -233,9 +226,33 @@ const changePassword = asyncHandler(async(req,res)=>{
 
 })
 
-const getCurrentUser = asyncHandler(async(req,res)=>{
+const addToCart = asyncHandler(async(req,res)=>{
+    const {productId} = req.body;
+
+    if(!productId){
+        throw new ApiError(400, invalidProduct)
+    }
+
+    const product = Product.findOne({productId})
+
+    if(!product){
+        throw new ApiError(404, "product not found")
+    }
+
+    const user = await User.findById(req.user._id)
+    // console.log(user._id)
+
+    const productIsPresent = user.cart.includes(productId)
+    if(productIsPresent){
+        throw new ApiError(400, "Product already excist")
+    }
+    user.cart.push(productId)
+    user.save({validateBeforeSave: false})
+
     return res.status(200)
-    .json(200, req.user,"current user fatched successfully")
+    .json(new ApiResponse(200, {}, "Added to cart successfully"))
+    
+
 })
 
 export {
@@ -244,5 +261,5 @@ export {
     logoutUser,
     refreshAccessToken,
     changePassword,
-    getCurrentUser
+    addToCart
 }
